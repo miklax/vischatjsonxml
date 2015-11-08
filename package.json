@@ -14,5 +14,12 @@
   "license": "GNU v3",
   "bugs": {
     "url": "https://github.com/miklax/vischatjsonxml/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.4",
+    "morgan": "^1.6.1",
+    "path": "^0.12.7"
   }
 }
