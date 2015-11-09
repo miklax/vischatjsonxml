@@ -29,7 +29,7 @@ app.use(function(req, res, next){
 app.use(morgan('dev'));
 
 //konekcija na bazu
-// mongoose.connect(config.database);
+mongoose.connect(config.database);
 
 //staticna lokacija za fajlove - assets, etc
 app.use(express.static(__dirname + '/public'));
