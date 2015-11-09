@@ -60,6 +60,7 @@ module.exports = function(app, express){
 	
 	//provera tokena
 	
+	
 	//testiranje rute
 	
 	// /users
