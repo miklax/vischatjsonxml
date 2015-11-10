@@ -4,7 +4,7 @@ var jwt 		= require('jsonwebtoken');
 var User 		= require('../models/user');
 var config 		= require('../../config');
 
-var secretKey = config.secret
+var secretKey = config.secret;
 
 module.exports = function(app, express){
 
@@ -58,6 +58,24 @@ module.exports = function(app, express){
 	  });
 	});
 
+	//kreiraj admina - OVO IZBACITI KASNIJE IZ KODA :D
+	apiRouter.post('/admincreate', function(req, res){
+		User.findOne({'username': 'admin'}, function(err, user){
+			if (user) {
+				//ako vec postoji samo uradi update passorda
+				user.password = 'admin';
+				user.save();
+			} else {
+				//kreiraj novog korisnika i snimi
+				var newUser = new User();
+				newUser.name = 'admin';
+				newUser.username = 'admin';
+				newUser.password = 'admin';
+				newUser.save();
+			}
+		});
+	});
+
 	//provera tokena
 	apiRouter.use(function(req, res, next){
 
@@ -86,9 +104,39 @@ module.exports = function(app, express){
 		}
 	});
 
-	//testiranje rute
+	//endpoint  '/'
+	apiRouter.route('/', function(req, res){
+		res.json({
+			message: 'success, api root'
+		});
+	});
 
 	// /users
+	apiRouter.route('/users')
+		.post(function(req, res){
+			//uzmi iz requesta podatke i snimi u bazu
+			var newUser = new User();
+			newUser.name = req.body.name;
+			newUser.username = req.body.username;
+			newUser.password = req.body.password;
+
+			newUser.save(function(err){
+				if(err){
+					if (err.code == 11000)
+						return res.json({ success: false, message: 'A user with that username already exists. '});
+					else
+						return res.send(err);
+				}
+			});
+		})
+		.get(function(req, res){
+			User.find({}, function(err, usersList){
+				if(err)
+					res.send(err);
+
+				res.json(usersList);
+			});
+		});
 
 	// /users/:user_id
 
