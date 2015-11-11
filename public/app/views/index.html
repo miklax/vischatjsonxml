@@ -3,12 +3,39 @@
 <head>
 	<meta charset="UTF-8">
 	<title>viser</title>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="bower_components/animate.css/animate.css">
-	<link rel="stylesheet" href="public/assets/styleglobal.css">
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="//yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css">
+
+	<link rel="stylesheet" href="assets/styleglobal.css">
 
 </head>
 <body>
-	<p>Lorem ipsum dolor sit amet.</p>
+	<!-- baner -->
+	<!-- baner samo ukoliko je korisnik ulogovan  ng-if-->
+
+
+	<!-- main -->
+	<div class="container pure g">
+		<div class="pure-u-1">
+			<div ng-view></div>
+			<h1>Hello world</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat rem perferendis magnam facilis, hic repudiandae sed harum numquam sit odit.</p>
+		</div>
+	</div>
+
 </body>
+
+	<!-- scripts -->
+
+	<!-- angular -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+
+	<!-- controllers -->
+
+	<!-- services -->
+
+	<!-- app -->
 </html>
