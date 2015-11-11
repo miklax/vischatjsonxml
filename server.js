@@ -34,7 +34,7 @@ mongoose.connect(config.database);
 //staticna lokacija za fajlove - assets, etc
 app.use(express.static(__dirname + '/public'));
 
-//API rutiranje 
+//API rutiranje
 var apiRoutes = require('./app/routes/api')(app, express);
 app.use('/api', apiRoutes);
 

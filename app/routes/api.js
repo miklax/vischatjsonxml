@@ -10,55 +10,7 @@ module.exports = function(app, express){
 
 	var apiRouter = express.Router();
 
-	//atentikacija korisnika
-	apiRouter.post('/authenticate', function(req, res) {
-
-	  // pronadji korisnika
-	  User.findOne({
-	    username: req.body.username
-	  }).select('name username password').exec(function(err, user) {
-
-	    if (err) throw err;
-
-	    // user not found
-	    if (!user) {
-	      res.json({
-	      	success: false,
-	      	message: 'User not found.'
-	    	});
-	    } else if (user) {
-
-	      // provera lozinke
-	      var validPassword = user.comparePassword(req.body.password);
-	      if (!validPassword) {
-	        res.json({
-	        	success: false,
-	        	message: 'Wrong password.'
-	      	});
-	      } else {
-
-	        // user ok, kreiraj token
-	        var token = jwt.sign({
-	        	name: user.name,
-	        	username: user.username
-	        }, secretKey, {
-	          expiresInMinutes: 1440
-	        });
-
-	        // vrati token
-	        res.json({
-	          success: true,
-	          message: 'Token assigned!',
-	          token: token
-	        });
-	      }
-
-	    }
-
-	  });
-	});
-
-	//kreiraj admina - OVO IZBACITI KASNIJE IZ KODA :D
+		//kreiraj admina - OVO IZBACITI KASNIJE IZ KODA :D
 	apiRouter.post('/admincreate', function(req, res){
 		User.findOne({'username': 'admin'}, function(err, user){
 			if (user) {
@@ -72,7 +24,61 @@ module.exports = function(app, express){
 				newUser.username = 'admin';
 				newUser.password = 'admin';
 				newUser.save();
+
+				res.json({
+					message: 'admin user created'
+				});
+
+				console.log(user.name + 'created');
 			}
+		});
+	});
+
+	//atentikacija korisnika
+	apiRouter.post('/authenticate', function(req, res) {
+
+		// pronadji korisnika
+		User.findOne({
+			username: req.body.username
+		}).select('name username password').exec(function(err, user) {
+
+			if (err) throw err;
+
+			// user not found
+			if (!user) {
+				res.json({
+					success: false,
+					message: 'User not found.'
+				});
+			} else if (user) {
+
+				// provera lozinke
+				var validPassword = user.comparePassword(req.body.password);
+				if (!validPassword) {
+					res.json({
+						success: false,
+						message: 'Wrong password.'
+					});
+				} else {
+
+					// user ok, kreiraj token
+					var token = jwt.sign({
+						name: user.name,
+						username: user.username
+					}, secretKey, {
+						expiresInMinutes: 1440
+					});
+
+					// vrati token
+					res.json({
+						success: true,
+						message: 'Token assigned!',
+						token: token
+					});
+				}
+
+			}
+
 		});
 	});
 
@@ -141,6 +147,9 @@ module.exports = function(app, express){
 	// /users/:user_id
 
 	// /me endpoint -prikaz informacija korisnika
+
+
+	return apiRouter;
 
 
 };
