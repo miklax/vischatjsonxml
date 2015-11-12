@@ -66,7 +66,7 @@ module.exports = function(app, express){
 						name: user.name,
 						username: user.username
 					}, secretKey, {
-						expiresInMinutes: 1440
+						expiresInMinutes: 2880 //2 dana :D
 					});
 
 					// vrati token
@@ -145,9 +145,12 @@ module.exports = function(app, express){
 		});
 
 	// /users/:user_id
+	//get, put, delete,
 
 	// /me endpoint -prikaz informacija korisnika
-
+	api.router('/me', function(req, res){
+		res.send(req.decoded);
+	});
 
 	return apiRouter;
 
