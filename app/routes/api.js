@@ -148,7 +148,7 @@ module.exports = function(app, express){
 	//get, put, delete,
 
 	// /me endpoint -prikaz informacija korisnika
-	api.router('/me', function(req, res){
+	apiRouter.get('/me', function(req, res) {
 		res.send(req.decoded);
 	});
 
