@@ -2,3 +2,7 @@
   margin: 0 auto;
   max-width: 920px;
 }
+
+.mkl-navbar{
+  border-bottom: 1px solid black;
+}

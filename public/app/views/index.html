@@ -14,13 +14,21 @@
 <body>
 	<!-- baner -->
 	<!-- baner samo ukoliko je korisnik ulogovan  ng-if-->
+	<div class="mkl-navbar pure-menu pure-menu-horizontal">
+    <a href="#" class="pure-menu-heading pure-menu-link">HOME</a>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">XML Chat</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">JSON Chat</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
+    </ul>
+	</div>
 
 
 	<!-- main -->
 	<div class="container pure g">
 		<div class="pure-u-1">
 			<div ng-view></div>
-			<h1>Hello world</h1>
+			<h1>Landing page with login button</h1>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat rem perferendis magnam facilis, hic repudiandae sed harum numquam sit odit.</p>
 		</div>
 	</div>
