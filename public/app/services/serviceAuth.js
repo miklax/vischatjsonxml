@@ -1,29 +1,58 @@
 angular.module('serviceAuth', [])
 
-//AToken je factory definisan ispod
+//AToken je factory definisan ispod Auth factory
 .factory('Auth', function($http, $q, AToken){
   var authFact = {};
 
   //metode dodate objektu za login, logout i da li je korisnik ulogovan (bol)
 
+  //login i dodela tokena
   authFact.login = function(username, password){
     return $http.post('/api/authenticate', {username: username, passord: password})
       .success(function(data){
-        AToken.set(data.token);
+        AToken.setToken(data.token);
         return data;
       });
   };
 
+  //logout i sklanja token
   authFact.logout = function(){
-    AToken.set();
+    AToken.setToken();
   };
 
+  //proverava da li je korisnik ulogovan, tj da li postoji token
   authFact.isLogged = function(){
-    if(AToken.get())
+    if(AToken.getToken())
       return true;
     else {
       return false;
     }
   };
+
+  //vrati ulogovanog koristnika
+  authFact.getUser = function() {
+    if(AToken.getToken())
+      return $http.get('/api/me', {cache: true});
+    else
+      return $q.reject({message: 'No token found'});
+  };
+
+  //kreiraj admina za app
+  authFact.createAdmin = function(){
+    $http.post('/admincreate');
+  };
+
+  return authFact;
+})
+
+
+//factory AToken
+.factory('AToken' , function($window){
+
+  var ATokenFact = {};
+
+  ATokenFact.setToken = function(token){};
+
+  AtokenFact.getToken = function(){};
 
 });

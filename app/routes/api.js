@@ -76,9 +76,7 @@ module.exports = function(app, express){
 						token: token
 					});
 				}
-
 			}
-
 		});
 	});
 
@@ -146,6 +144,46 @@ module.exports = function(app, express){
 
 	// /users/:user_id
 	//get, put, delete,
+	apiRouter.route('/users/:user_id')
+
+		//vrati usera (json) sa zadatim ID
+		.get(function(req, res){
+			User.findById(req.params.user_id, function(err, user){
+				if(err) res.send(err);
+
+				//vrati korisnika
+				res.json(user);
+			});
+		})
+
+		//UPDATE korisnika sa zadatim ID
+		.put(function(req, res){
+				User.findById(res.params.user_id, function(err, user){
+					if (err) res.send(err);
+
+					//procitaj iz headera
+					if (res.body.name) user.name = res.body.name;
+					if (res.body.username) user.username = res.body.username;
+					if (res.body.password) user.pasword = res.body.password;
+
+					user.save(function(err){
+						if (err) res.send(err);
+					});
+
+					//feedback u konzoli
+					res.json({message: 'User is updated'});
+					console.log('User: ' + user.name + ', is updated');
+				});
+		})
+
+		.delete(function(req, res){
+			User.remove({_id: req.params.user_id}, function(err, user){
+				if (err) res.send(err);
+
+				res.json({message: 'User deleted'});
+				console.log('User: '+ user.name + ', is deleted');
+			});
+		});
 
 	// /me endpoint -prikaz informacija korisnika
 	apiRouter.get('/me', function(req, res) {
@@ -153,6 +191,4 @@ module.exports = function(app, express){
 	});
 
 	return apiRouter;
-
-
 };
