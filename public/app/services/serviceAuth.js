@@ -45,14 +45,38 @@ angular.module('serviceAuth', [])
   return authFact;
 })
 
-
 //factory AToken
 .factory('AToken' , function($window){
 
   var ATokenFact = {};
 
-  ATokenFact.setToken = function(token){};
+  //postavi token u browser u localStorage
+  ATokenFact.setToken = function(token){
+    if(token)
+      $window.localStorage.setItem('token', token);
+    else {
+      $window.localStorage.removeItem('token');
+    }
+  };
 
-  AtokenFact.getToken = function(){};
+  //preuzmi token iz browsera iz localStorage
+  AtokenFact.getToken = function(){
+    return $window.localStorage.getItem('token');
+  };
+})
+
+//prilikom svakog requesta koriscenje tokena
+.factory('AuthIntercept' , function($q, $location, $AithToken){
+
+  var interceptFact = {};
+
+  interceptFact.request = function(config){
+
+    //preuzima token
+    var token  = AToken.getToken();
+  };
+
+  interceptFact.responseError = function(){};
+
 
 });
