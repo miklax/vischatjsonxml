@@ -68,7 +68,7 @@ angular.module('serviceAuth', [])
 })
 
 //prilikom svakog requesta koriscenje tokena
-.factory('AuthIntercept' , function($q, $location, $AithToken){
+.factory('AuthIntercept' , function($q, $location, AToken){
 
   var interceptFact = {};
 
