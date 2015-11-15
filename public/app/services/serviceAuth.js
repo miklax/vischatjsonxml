@@ -63,6 +63,8 @@ angular.module('serviceAuth', [])
   AtokenFact.getToken = function(){
     return $window.localStorage.getItem('token');
   };
+
+  return AtokenFact;
 })
 
 //prilikom svakog requesta koriscenje tokena
@@ -74,9 +76,25 @@ angular.module('serviceAuth', [])
 
     //preuzima token
     var token  = AToken.getToken();
+
+    if(token){
+      config.headers['x-access-token'] = token;
+    }
+
+    return config;
   };
 
-  interceptFact.responseError = function(){};
+  interceptFact.responseError = function(response){
 
+    //if 403 status
+    if (response.status == 403) {
+      AToken.setToken(); //obrisi token
+      $location.path('/login');
+    }
 
+    //vraca greske od servera
+    return $q.reject(response);
+  };
+
+  return interceptFact;
 });
