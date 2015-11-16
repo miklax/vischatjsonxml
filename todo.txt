@@ -1,4 +1,12 @@
 - roboto konekcija
-- test svih ruta
 - landing page
 - chat page
+- test svih ruta
+
+
+Strane:
+login
+Landing
+users
+XML chat
+JSON chat

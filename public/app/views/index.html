@@ -11,10 +11,10 @@
 	<link rel="stylesheet" href="assets/styleglobal.css">
 
 </head>
-<body>
+<body ng-app="userApp" ng-controller="mainController as main">
 	<!-- baner -->
 	<!-- baner samo ukoliko je korisnik ulogovan  ng-if-->
-	<div class="mkl-navbar pure-menu pure-menu-horizontal">
+	<div class="mkl-navbar pure-menu pure-menu-horizontal" ng-if="main.loggedIn">
     <a href="#" class="pure-menu-heading pure-menu-link">HOME</a>
     <ul class="pure-menu-list">
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">XML Chat</a></li>
@@ -42,8 +42,14 @@
 	<script src="bower_components/jquery/dist/jquery.js"></script>
 
 	<!-- controllers -->
+	<script src="app/controllers/mainCtrl.js"></script>
+	<script src="app/controllers/userCtrl.js"></script>
 
 	<!-- services -->
+	<script src="app/services/authService.js"></script>
+	<script src="app/services/userService.js"></script>
 
 	<!-- app -->
+	<script src="app/app.js"></script>
+	<script src="app/app.routes.js"></script>
 </html>

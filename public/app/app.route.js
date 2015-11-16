@@ -15,6 +15,7 @@ angular.module('app.routes', ['ngRoute'])
     controllerAs: 'main'
   })
 
+  //korisnici
   .when('/users', {
     templateUrl: 'app/views/pages/users/all.html',
     controller: 'userController',
