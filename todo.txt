@@ -1,0 +1,4 @@
+- roboto konekcija
+- test svih ruta
+- landing page
+- chat page
