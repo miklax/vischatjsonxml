@@ -19,12 +19,34 @@ angular.module('mainCtrl', [])
   });
 
   //funkcija za logovanje
-  vm.doLogin = function() {};
+  vm.doLogin = function() {
+    vm.processing = true;
+
+    //ocisti error poruku
+    vm.error = '';
+
+    Auth.login(vm.loginData.username, vm.loginData.password)
+      .success(function(data) {
+        vm.processing = false;
+
+        //ako je logovanje uspesno usmeri ga ka /users
+        if (data.sucess)
+          $location.path('/users');
+        else {
+          vm.error = data.message;
+        }
+      });
+  };
 
   //funkcija za logout
-  vm.doLogout = function() {};
+  vm.doLogout = function() {
+    Auth.logout();
+    vm.user = '';
+  };
 
   //funkcija za kreiranje admina
-  vm.createAdmin = function() {};
+  vm.createAdmin = function(){
+    Auth.createAdmin();
+  };
 
-})
+});
