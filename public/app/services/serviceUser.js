@@ -30,5 +30,5 @@ angular.module('userService', [])
 	};
 
 	return userFactory;
-  //git bug
+
 });

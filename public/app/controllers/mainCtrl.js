@@ -7,6 +7,8 @@ angular.module('mainCtrl', [])
   //proverava da li je korisnik ulogovan
   vm.loggedIn = Auth.isLoggedIn();
 
+  vm.test = 'test mikla';
+
   //na svakom requestu proverava da li je koristnik ulogovan
   $rootScope.$on('$routeChangeStart', function(){
     vm.loggedIn = Auth.isLoggedIn();

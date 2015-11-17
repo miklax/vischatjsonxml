@@ -1,8 +1,8 @@
-angular.module('userApp', ['ngAnimate', 'app.routes', 'authService', 'mainCtrl', 'userCtrl', 'userService'])
+angular.module('chatApp', ['ngAnimate', 'app.routes', 'serviceAuth', 'mainCtrl', 'userCtrl', 'userService'])
 
 .config(function($httpProvider) {
 
 	// zakaci interceptor na http requests
-	$httpProvider.interceptors.push('AuthInterceptor');
+	$httpProvider.interceptors.push('AuthIntercept');
 
 });
