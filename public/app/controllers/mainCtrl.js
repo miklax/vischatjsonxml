@@ -3,6 +3,7 @@ angular.module('mainCtrl', [])
 .controller('mainController', function($scope, $http, Auth){
 
   var vm = this;
+  alert('test: mainCtrl');
 
   //proverava da li je korisnik ulogovan
   vm.loggedIn = Auth.isLoggedIn();

@@ -1,4 +1,7 @@
-angular.module('testApp' [])
+angular.module('testApp', ['./controllers/testCtrl'])
+
 .controller('testAppCtrl', function(){
-  alert('test ok');
+  var vm = this;
+
+  vm.poruka = 'test';
 });

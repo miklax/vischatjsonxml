@@ -3,6 +3,8 @@ angular.module('userCtrl', ['userService'])
 .controller('userController', function(User) {
 
 	var vm = this;
+	alert('test: userCtrl');
+
 
 	// za prikaz LOADING...
 	vm.processing = true;
