@@ -10,7 +10,8 @@
 
 	<!-- load angular and angular-route via CDN -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
-
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-animate.js"></script>
 
 	<!-- controllers -->
 
@@ -20,10 +21,12 @@
 
 	<!-- app -->
 	<script src="app/appTest.js"></script>
+	<script src="app/controllers/testCtrl.js"></script>
+	<script src="app/controllers/mainCtrl.js"></script>
 
 </head>
-  <body ng-app="testApp" ng-controller="testAppCtrl">
-  {{ 3 + 2}}
+  <body ng-app="mainCtrl" ng-controller="mainController">
+  {{ 3 + 2 }}
 
   </body>
 </html>

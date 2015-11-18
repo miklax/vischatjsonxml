@@ -1,4 +1,4 @@
-angular.module('testApp', ['./controllers/testCtrl'])
+angular.module('testApp', ['testCtrl'])
 
 .controller('testAppCtrl', function(){
   var vm = this;

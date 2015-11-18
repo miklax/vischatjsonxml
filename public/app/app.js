@@ -1,4 +1,5 @@
-angular.module('chatApp', ['ngAnimate', 'app.routes', 'serviceAuth', 'mainCtrl', 'userCtrl', 'userService'])
+// angular.module('chatApp', ['ngAnimate', 'app.routes', 'serviceAuth', 'mainCtrl', 'userCtrl', 'userService'])
+angular.module('chatApp', ['mainCtrl'])
 
 .config(function($httpProvider) {
 
