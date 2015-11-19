@@ -1,3 +1,4 @@
+// from scotch.io
 angular.module('userService', [])
 
 .factory('User', function($http) {

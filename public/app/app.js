@@ -1,10 +1,9 @@
-// angular.module('chatApp', ['ngAnimate', 'app.routes', 'serviceAuth', 'mainCtrl', 'userCtrl', 'userService'])
-angular.module('chatApp', ['mainCtrl'])
+angular.module('userApp', ['ngAnimate', 'app.routes', 'authService', 'mainCtrl', 'userCtrl', 'userService'])
 
+// application configuration to integrate token into requests
 .config(function($httpProvider) {
 
-	alert('test main module');
-	// zakaci interceptor na http requests
-	$httpProvider.interceptors.push('AuthIntercept');
+	// attach our auth interceptor to the http requests
+	$httpProvider.interceptors.push('AuthInterceptor');
 
 });
