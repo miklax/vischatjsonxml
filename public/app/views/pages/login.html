@@ -1,1 +1,28 @@
-<h1>LOGIN</h1>
+<div class="pure-g">
+  <div class="pure-u-1">
+    <h1>Ulogujte se</h1>
+
+    <form class="pure-form pure-form-stacked" ng-submit="login.doLogin()">
+    <fieldset>
+        <legend>Prijava na sistem:</legend>
+
+        <label for="username">Korisnicko ime:</label>
+        <input id="username" type="text" placeholder="Korisnicko ime" ng-model="login.loginData.username">
+
+        <label for="password">Lozinka:</label>
+        <input id="password" type="password" placeholder="Lozinka" ng-model="login.loginData.password">
+
+        <div ng-if="login.error">
+          <legend>Greska</legend>
+          {{ login.error }}
+        </div>
+
+        <br />
+
+        <button type="submit" class="pure-button pure-button-primary">Prijavite se</button>
+    </fieldset>
+</form>
+
+
+  </div>
+</div>

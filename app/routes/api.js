@@ -48,7 +48,7 @@ module.exports = function(app, express){
 			if (!user) {
 				res.json({
 					success: false,
-					message: 'User not found.'
+					message: 'Korisnik nije pronadjen.'
 				});
 			} else if (user) {
 
