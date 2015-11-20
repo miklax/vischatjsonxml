@@ -33,10 +33,9 @@
 </head>
 <body ng-app="userApp" ng-controller="mainController as main">
 
-{{ 3+9 }}
 <!-- baner -->
 	<!-- baner samo ukoliko je korisnik ulogovan  ng-if-->
-	<div ng-if="main.loggedIn">
+	<div ng-if="!main.loggedIn">
 		<div class="mkl-navbar pure-menu pure-menu-horizontal">
 	    <a href="#" class="pure-menu-heading pure-menu-link">HOME</a>
 	    <ul class="pure-menu-list">
@@ -48,11 +47,9 @@
 	</div>
 
 	<!-- main -->
-	<div class="container pure g">
+	<div class="container pure-g">
 		<div class="pure-u-1">
 			<div ng-view></div>
-			<h1>{{ 3 + 2 }}</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat rem perferendis magnam facilis, hic repudiandae sed harum numquam sit odit.</p>
 		</div>
 	</div>
 

@@ -1,0 +1,18 @@
+<div class="pure-g">
+  <div class="pure-u-1">
+    <h1>VISER - Aplikacija za testiranje XML/JSON</h1>
+    <br />
+    <div ng-if="!main.loggedIn">
+      <p>Prijavite se na sistem:</p>
+      <a href="/login" class="button-xlarge pure-button">Prijava</a>
+    </div>
+
+    <div ng-if="main.loggedIn">
+      <p>Izaberite mod chat-a XML/JSON:</p>
+      <a href="/xml" class="button-xlarge button-warning pure-button">XML</a>
+      <a href="/json" class="button-xlarge button-secondary pure-button">JSON</a>
+    </div>
+
+  </div>
+
+</div>
