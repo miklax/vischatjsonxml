@@ -8,14 +8,14 @@ angular.module('app.routes', ['ngRoute'])
 		.when('/', {
 			templateUrl : 'app/views/pages/home.html'
 		})
-		
+
 		// login page
 		.when('/login', {
 			templateUrl : 'app/views/pages/login.html',
    			controller  : 'mainController',
     			controllerAs: 'login'
 		})
-		
+
 		// show all users
 		.when('/users', {
 			templateUrl: 'app/views/pages/users/all.html',
@@ -36,6 +36,13 @@ angular.module('app.routes', ['ngRoute'])
 			templateUrl: 'app/views/pages/users/single.html',
 			controller: 'userEditController',
 			controllerAs: 'user'
+		})
+
+		// Json Chat
+		.when('/jsonchat', {
+			templateUrl: 'app/views/pages/jsonchat.html',
+			controller: 'jsonController',
+			controllerAs: 'jchat'
 		});
 
 	$locationProvider.html5Mode(true);

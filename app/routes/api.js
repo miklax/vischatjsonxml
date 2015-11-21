@@ -11,7 +11,7 @@ module.exports = function(app, express){
 	var apiRouter = express.Router();
 
 		//kreiraj admina - OVO IZBACITI KASNIJE IZ KODA :D
-	apiRouter.put('/admincreate', function(req, res){
+	apiRouter.post('/admincreate', function(req, res){
 		User.findOne({'username': 'admin'}, function(err, user){
 			if (user) {
 				//ako vec postoji samo uradi update passorda
@@ -29,7 +29,7 @@ module.exports = function(app, express){
 					message: 'admin user created'
 				});
 
-				console.log(user.name + 'created');
+				console.log(newUser.name + 'created');
 			}
 		});
 	});

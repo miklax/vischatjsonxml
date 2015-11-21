@@ -29,7 +29,7 @@ angular.module('mainCtrl', [])
 
 				// ako je sve ok prebaci korisnika
 				if (data.success)
-					$location.path('/users');
+					$location.path('/');
 				else
 					vm.error = data.message;
 
