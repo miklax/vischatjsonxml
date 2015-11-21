@@ -44,7 +44,7 @@ module.exports = function(app, express){
 
 			if (err) throw err;
 
-			// user not found
+			// user not foundapp
 			if (!user) {
 				res.json({
 					success: false,
@@ -127,7 +127,7 @@ module.exports = function(app, express){
 			newUser.save(function(err){
 				if(err){
 					if (err.code == 11000)
-						return res.json({ success: false, message: 'A user with that username already exists. '});
+						return res.json({ success: false, message: 'Korisnik sa tim imenom vec postoji '});
 					else
 						return res.send(err);
 				}

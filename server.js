@@ -34,9 +34,14 @@ mongoose.connect(config.database);
 //staticna lokacija za fajlove - assets, etc
 app.use(express.static(__dirname + '/public'));
 
-//API rutiranje
+//API USERS rutiranje
 var apiRoutes = require('./app/routes/api')(app, express);
 app.use('/api', apiRoutes);
+
+//APU JSON Chat
+var apiJsonRoutes = require('./app/routes/apiJsonChat')(app, express);
+app.use('/jsonchat', apiJsonRoutes);
+
 
 app.get('*', function(req, res){
 	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
