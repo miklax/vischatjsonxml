@@ -6,8 +6,8 @@ module.exports = function(app, express){
 
   var apiRouter = express.Router();
 
-  //TODO pokupi stack - za pocetak mozda samo aktuelni dan
   apiRouter.route('/chat')
+  //dodaj liniju u stack
   .post(function(req, res){
     var jsonChat = new JsonChat();
     jsonChat.timeStamp = new Date();
@@ -19,6 +19,7 @@ module.exports = function(app, express){
     });
   })
 
+  //get sve linije iz baze
   .get(function(req, res){
       JsonChat.find({}, function(err, chatHistory){
         if(err) return res.send(err);
@@ -27,8 +28,6 @@ module.exports = function(app, express){
 
       });
   });
-
-  //TODO Dodaj liniju u stack
 
   //TODO Obrisi history
 

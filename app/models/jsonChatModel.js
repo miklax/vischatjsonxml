@@ -7,4 +7,4 @@ var ChatSchema 	= new Schema({
   msgLine: String
 });
 
-module.exports = mongoose.model('jsonChat', ChatSchema);
+module.exports = mongoose.model('JsonChat', ChatSchema);
