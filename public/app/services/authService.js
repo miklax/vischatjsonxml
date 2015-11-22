@@ -1,12 +1,5 @@
-//from scotch.io
 angular.module('authService', [])
 
-// ===================================================
-// auth factory to login and get information
-// inject $http for communicating with the API
-// inject $q to return promise objects
-// inject AuthToken to manage tokens
-// ===================================================
 .factory('Auth', function($http, $q, AuthToken) {
 
 	// create auth factory object
@@ -58,10 +51,6 @@ angular.module('authService', [])
 
 })
 
-// ===================================================
-// factory for handling tokens
-// inject $window to store token client-side
-// ===================================================
 .factory('AuthToken', function($window) {
 
 	var authTokenFactory = {};
@@ -71,9 +60,6 @@ angular.module('authService', [])
 		return $window.localStorage.getItem('token');
 	};
 
-	// function to set token or clear token
-	// if a token is passed, set the token
-	// if there is no token, clear it from local storage
 	authTokenFactory.setToken = function(token) {
 		if (token)
 			$window.localStorage.setItem('token', token);
@@ -85,9 +71,6 @@ angular.module('authService', [])
 
 })
 
-// ===================================================
-// application configuration to integrate token into requests
-// ===================================================
 .factory('AuthInterceptor', function($q, $location, AuthToken) {
 
 	var interceptorFactory = {};
