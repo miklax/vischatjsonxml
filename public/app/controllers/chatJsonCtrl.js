@@ -9,7 +9,7 @@ angular.module('jsonCtrl' ['chatJsonService'])
   });
 
   //salje username, timestamp i poruku
-  jsonFact.doPostMsg(function(){
+  jsonFact.doPostMsg(function(username, dataMsg){
 
   });
 });

@@ -7,8 +7,12 @@ angular.module('chatJsonService', [])
     return $http.get('/jsonchat/chat');
   };
 
-  chatFactory.doPostMsg = function(msgData){
-    return $http.post('/jsonchat/chat', msgData);
+  chatFactory.doPostMsg = function(username, msgData){
+
+    return $http.post('/jsonchat/chat', {
+      username: username,
+      msgData: msgData
+    });
   };
 
   return chatFactory;
