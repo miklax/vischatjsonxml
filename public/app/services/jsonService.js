@@ -4,12 +4,12 @@ angular.module('chatJsonService', [])
   var chatFactory = {};
 
   chatFactory.doGetHistory = function(){
-    return $http.get('/jsonchat/chat');
+    return $http.get('/chat/chat');
   };
 
   chatFactory.doPostMsg = function(username, msgData){
 
-    return $http.post('/jsonchat/chat', {
+    return $http.post('/chat/chat', {
       username: username,
       msgData: msgData
     });

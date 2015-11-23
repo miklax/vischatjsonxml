@@ -40,7 +40,7 @@ app.use('/api', apiRoutes);
 
 //APU JSON Chat
 var apiJsonRoutes = require('./app/routes/apiJsonChat')(app, express);
-app.use('/jsonchat', apiJsonRoutes);
+app.use('/chat', apiJsonRoutes);
 
 
 app.get('*', function(req, res){

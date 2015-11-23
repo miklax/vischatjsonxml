@@ -39,7 +39,7 @@ angular.module('app.routes', ['ngRoute'])
 		})
 
 		// Json Chat
-		.when('/jsonchat', {
+		.when('/chat/jsonchat', {
 			templateUrl: 'app/views/pages/jsonchat.html',
 			controller: 'jsonController',
 			controllerAs: 'jchat'

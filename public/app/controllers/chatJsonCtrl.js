@@ -6,10 +6,11 @@ angular.module('jsonCtrl' ['chatJsonService'])
   jsonFact.doGetHistory()
   .success(function(data){
     vm.historyData = data;
+    console.log(data);
   });
 
   //salje username, timestamp i poruku
-  jsonFact.doPostMsg(function(username, dataMsg){
+  jsonFact.doPostMsg(function(){
 
   });
 });
