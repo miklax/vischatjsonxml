@@ -49,4 +49,5 @@ app.get('*', function(req, res){
 
 //pokretanje servera
 app.listen(config.port);
+console.log('=======================================');
 console.log('Server started at port: ' + config.port);
