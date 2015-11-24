@@ -5,8 +5,6 @@ angular.module('chatApp', [
 	'mainCtrl',
 	'userCtrl',
 	'userService'
-	// 'jsonCtrl',
-	// 'jsonController'
 ])
 
 // application configuration to integrate token into requests

@@ -43,6 +43,13 @@ angular.module('app.routes', ['ngRoute'])
 			templateUrl: 'app/views/pages/jsonchat.html',
 			controller: 'jsonController',
 			controllerAs: 'jchat'
+		})
+
+		//xmlchat
+		.when('/chat/xmlchat', {
+			templateUrl: 'app/views/pages/xmlchat.html',
+			controller: 'xmlController',
+			controllerAs: 'xchat'
 		});
 
 	$locationProvider.html5Mode(true);
