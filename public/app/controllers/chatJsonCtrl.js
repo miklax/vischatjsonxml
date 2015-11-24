@@ -1,5 +1,5 @@
 // var app = angular.module('jsonCtrl', ['chatJsonService']);
-var app = angular.module('jsonCtrl', []);
+var app = angular.module('chatJsonCtrl', []);
 
 app.controller('jsonController', function(jsonFact){
 

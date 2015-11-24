@@ -1,4 +1,4 @@
-angular.module('chatJsonService', [])
+angular.module('jsonService', [])
 .factory('jsonFact', function($http){
 
   var chatFactory = {};

@@ -1,4 +1,4 @@
-angular.module('xmlCtrl', ['xmlService'])
+angular.module('chatXmlCtrl', ['xmlService'])
 
 .controller('xmlController', function(xmlFact) {
 
