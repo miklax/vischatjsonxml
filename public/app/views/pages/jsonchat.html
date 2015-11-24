@@ -7,7 +7,7 @@
       <li><span class="chat-tstamp">{{ cmsg.timeStamp }}</span> - <span class="chat-username">{{ cmsg.username }}</span>: <span class="chat-msg">{{ cmsg.msgLine }}</span></li>
     </ul>
 
-    {{ 5 + 3}}
+    {{ 5 + 3}} - {{main.user.username}}
 
     <!-- polje za unos i dugme 'posalji' -->
     <form class="pure-form" ng-submit="jchat.doPostMsg()">
