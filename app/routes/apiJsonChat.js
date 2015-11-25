@@ -17,6 +17,9 @@ module.exports = function(app, express){
     jsonChat.save(function(err){
       return res.send(err);
     });
+
+    // TODO !!!!!
+    //ovde mozda treba vratiti updejtovani json
   })
 
   //get sve linije iz baze

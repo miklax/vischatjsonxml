@@ -6,15 +6,15 @@ app.controller('jsonController', function(jsonFact){
   var vm = this;
   console.log('json controller loaded');
 
-///////mora u konstruktor, resi ovo kada se naspavas :D
-  vm.getHistory = function(){
-    jsonFact.doGetHistory()
-    .success(function(data){
-      vm.historyData = data;
-      console.log(data);
-    });
-  };
+  jsonFact.doGetHistory()
+  .success(function(data){
+    vm.historyData = data;
+    console.log(data);
+  });
 
+  vm.postMsg = function(){
+    jsonFact.doPostMsg(vm.historyData.username, msg)
+  };
 
   // //salje username, timestamp i poruku
   // jsonFact.doPostMsg(function(){
