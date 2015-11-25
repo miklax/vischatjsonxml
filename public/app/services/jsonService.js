@@ -7,11 +7,11 @@ angular.module('jsonService', [])
     return $http.get('/chat/chat');
   };
 
-  chatFactory.doPostMsg = function(username, msgData){
+  chatFactory.doPostMsg = function(username, msgLine){
 
     return $http.post('/chat/chat', {
       username: username,
-      msgData: msgData
+      msgLine: msgLine
     });
   };
 
