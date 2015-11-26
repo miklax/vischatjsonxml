@@ -21,8 +21,9 @@ app.controller('jsonController', function($rootScope, jsonFact){
       .success(function(data){
         vm.msgData.msgLine = '';          //ocisti formu
         vm.historyData = data;    //osvezi podatke na svakom slanju poruke
+        vm.$digest();
       });
-    // } 
+    // }
   };
 
 });

@@ -18,12 +18,12 @@ module.exports = function(app, express){
       return res.send(err);
     });
 
-    JsonChat.find({}, function(err, chatHistory){
-      if(err) return res.send(err);
-
-      return res.json(chatHistory);
-
-    });
+    // JsonChat.find({}, function(err, chatHistory){
+    //   if(err) return res.send(err);
+    //
+    //   return res.json(chatHistory);
+    //
+    // });
 
     // TODO !!!!!
     //ovde mozda treba vratiti updejtovani json
