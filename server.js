@@ -6,7 +6,7 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var io = require('socket.io').listen(http);
 
 var bodyParser = require('body-parser');
 var morgan 	= require('morgan'); //logovi pristupa serveru
@@ -35,6 +35,7 @@ mongoose.connect(config.database);
 
 //staticna lokacija za fajlove - assets, etc
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/bower_components'));
 
 //API USERS rutiranje
 var apiRoutes = require('./app/routes/api')(app, express);
