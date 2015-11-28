@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
 var ChatSchema 	= new Schema({
-	timeStamp: Date,
+	timeStamp: Date, //mozda odmah datenow
   username: String,
   msgLine: String
 });
