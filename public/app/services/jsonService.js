@@ -2,7 +2,7 @@ angular.module('jsonService', [])
 
 //kreiraj socket na klijentu
 .factory('fsocket', function(){
-  return io.connect('http://localhost:3000');
+  return io.connect('http://localhost:3050');
 });
 
 
