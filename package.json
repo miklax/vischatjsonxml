@@ -22,6 +22,7 @@
     "jsonwebtoken": "^5.4.1",
     "mongoose": "^4.2.4",
     "morgan": "^1.6.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "socket.io": "^0.9.17"
   }
 }

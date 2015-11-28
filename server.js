@@ -4,14 +4,16 @@
 */
 
 var express = require('express');
-var app 	= express();
+var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 var bodyParser = require('body-parser');
 var morgan 	= require('morgan'); //logovi pristupa serveru
 var mongoose = require('mongoose');
 var path 	= require('path'); //sredjuje i optimizuje putanje nodejs.org/api/path.html
 
 var config 	= require('./config.js');
-
 //KONFIGURACIJA - middlewares
 
 app.use(bodyParser.urlencoded({extended: true}));
