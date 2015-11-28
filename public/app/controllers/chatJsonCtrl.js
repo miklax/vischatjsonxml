@@ -1,7 +1,7 @@
 // var app = angular.module('jsonCtrl', ['chatJsonService']);
 var app = angular.module('chatJsonCtrl', [])
 
-.controller('jsonController', function(fsocket){
+.controller('jsonController', function($scope, fsocket){
 
   var vm = this;
   vm.msgs = [];
@@ -9,11 +9,12 @@ var app = angular.module('chatJsonCtrl', [])
   vm.sndMsg = function(){
     fsocket.emit('send msg', vm.msgData.msgLine);
     vm.msgData.msgLine = '';
+    console.log('sndMsg ok');
   };
 
   fsocket.on('get msg', function(data) {
     vm.msgs.push(data);
-    vm.$digest();
+    $scope.$digest();
   });
 
   // console.log('json controller loaded');

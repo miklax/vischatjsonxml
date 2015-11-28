@@ -3,8 +3,9 @@
     <legend>JSON chat:</legend>
 
     <!-- chat kontejner -->
-    <ul ng-repeat="cmsg in jchat.historyData">
-      <li><span class="chat-tstamp">{{ cmsg.timeStamp }}</span> - <span class="chat-username">{{ cmsg.username }}</span>: <span class="chat-msg">{{ cmsg.msgLine }}</span></li>
+    <ul ng-repeat="msg in jchat.msgs ">
+      <!-- <li><span class="chat-tstamp">{{ cmsg.timeStamp }}</span> - <span class="chat-username">{{ cmsg.username }}</span>: <span class="chat-msg">{{ cmsg.msgLine }}</span></li> -->
+      <li>{{ msg }}</li>
     </ul>
 
     {{ 5 + 3}}

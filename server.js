@@ -5,8 +5,8 @@
 
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io').listen(http);
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
 
 var bodyParser = require('body-parser');
 var morgan 	= require('morgan'); //logovi pristupa serveru
@@ -33,6 +33,13 @@ app.use(morgan('dev'));
 //konekcija na bazu
 mongoose.connect(config.database);
 
+
+io.sockets.on('connection', function(socket){
+    socket.on('send msg', function(data){
+        io.sockets.emit('get msg', data);
+    });
+});
+
 //staticna lokacija za fajlove - assets, etc
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/bower_components'));
@@ -45,12 +52,16 @@ app.use('/api', apiRoutes);
 var apiJsonRoutes = require('./app/routes/apiJsonChat')(app, express);
 app.use('/chat', apiJsonRoutes);
 
-
 app.get('*', function(req, res){
 	res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
 
+server.listen(config.port, function () {
+  console.log('Server started at port %d', config.port);
+	console.log('=======================================');
+});
+
 //pokretanje servera
-app.listen(config.port);
-console.log('=======================================');
-console.log('Server started at port: ' + config.port);
+// app.listen(config.port);
+// console.log('=======================================');
+// console.log('Server started at port: ' + config.port);
