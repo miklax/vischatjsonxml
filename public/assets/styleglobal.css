@@ -6,3 +6,8 @@
 .mkl-navbar{
   border-bottom: 1px solid black;
 }
+
+#chatWrap {
+  height: 400px;
+  overflow: auto;
+}
