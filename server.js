@@ -14,6 +14,7 @@ var mongoose = require('mongoose');
 var path 	= require('path'); //sredjuje i optimizuje putanje nodejs.org/api/path.html
 
 var config 	= require('./config.js');
+var History = require('./app/models/jsonChatModel.js');
 //KONFIGURACIJA - middlewares
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -35,8 +36,15 @@ mongoose.connect(config.database);
 
 
 io.sockets.on('connection', function(socket){
-    socket.on('send msg', function(data){
-        io.sockets.emit('get msg', data);
+    socket.on('send msg', function(dataObject){
+
+				var newHistory = new History(dataObject);
+				newHistory.save(function(err){
+					if(err) throw err;
+					else
+      			io.sockets.emit('get msg', dataObject);
+				});
+
     });
 });
 

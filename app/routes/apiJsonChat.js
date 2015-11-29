@@ -6,38 +6,38 @@ module.exports = function(app, express){
 
   var apiRouter = express.Router();
 
-  apiRouter.route('/chat')
+  // apiRouter.route('/chat')
   //dodaj liniju u stack
-  .post(function(req, res){
-    var jsonChat = new JsonChat();
-    jsonChat.timeStamp = new Date();
-    jsonChat.username = req.body.username;
-    jsonChat.msgLine = req.body.msgLine;
-
-    jsonChat.save(function(err){
-      return res.send(err);
-    });
-
-    // JsonChat.find({}, function(err, chatHistory){
-    //   if(err) return res.send(err);
-    //
-    //   return res.json(chatHistory);
-    //
-    // });
-
-    // TODO !!!!!
-    //ovde mozda treba vratiti updejtovani json
-  })
+  // .post(function(req, res){
+  //   var jsonChat = new JsonChat();
+  //   jsonChat.timeStamp = new Date();
+  //   jsonChat.username = req.body.username;
+  //   jsonChat.msgLine = req.body.msgLine;
+  //
+  //   jsonChat.save(function(err){
+  //     return res.send(err);
+  //   });
+  //
+  //   // JsonChat.find({}, function(err, chatHistory){
+  //   //   if(err) return res.send(err);
+  //   //
+  //   //   return res.json(chatHistory);
+  //   //
+  //   // });
+  //
+  //   // TODO !!!!!
+  //   //ovde mozda treba vratiti updejtovani json
+  // })
 
   //get sve linije iz baze
-  .get(function(req, res){
-      JsonChat.find({}, function(err, chatHistory){
-        if(err) return res.send(err);
-
-        return res.json(chatHistory);
-
-      });
-  });
+  // .get(function(req, res){
+  //     JsonChat.find({}, function(err, chatHistory){
+  //       if(err) return res.send(err);
+  //
+  //       return res.json(chatHistory);
+  //
+  //     });
+  // });
 
   //TODO Obrisi history
 

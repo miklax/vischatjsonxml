@@ -6,11 +6,11 @@
     <div id="chatWrap">
       <ul ng-repeat="msg in jchat.msgs ">
         <!-- <li><span class="chat-tstamp">{{ cmsg.timeStamp }}</span> - <span class="chat-username">{{ cmsg.username }}</span>: <span class="chat-msg">{{ cmsg.msgLine }}</span></li> -->
-        <li>{{ msg }}</li>
+        <li>{{ msg.timeStamp }} :: {{ msg.username }} : {{ msg.msgLine }}</li>
       </ul>
     </div>
 
-    {{ 5 + 3}}
+    {{ 5 + 3}} TEST OBRISATI
     <!-- polje za unos i dugme 'posalji' -->
     <form class="pure-form" ng-submit="jchat.sndMsg()">
         <fieldset>
