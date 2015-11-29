@@ -1,12 +1,16 @@
 // var app = angular.module('jsonCtrl', ['chatJsonService']);
 var app = angular.module('chatJsonCtrl', [])
 
-.controller('jsonController', function($rootScope, $scope, fsocket){
+.controller('jsonController', function($rootScope, $scope, fsocket, DBHistory){
 
   var vm = this;
   vm.msgs = [];
 
   //TODO ovde ucitati history
+  DBHistory.doGetHistory()
+  .success(function(data){
+    vm.msgs = data;
+  });
 
   vm.sndMsg = function(){
     fsocket.emit('send msg', {
