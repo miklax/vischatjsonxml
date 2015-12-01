@@ -1,1 +1,17 @@
-<h1>SINGLE USER</h1>
+<form class="pure-form pure-form-stacked" ng-submit="user.saveData()">
+    <fieldset>
+        <legend>Korisnik</legend>
+
+        <label for="ime">Ime i prezime:</label>
+        <input id="ime" type="text" placeholder="Ime i prezime" ng-model="user.userData.name">
+
+        <label for="username">Korisničko ime:</label>
+        <input id="username" type="text" placeholder="Korisničko ime" ng-model="user.userData.username">
+
+        <label for="password">Lozinka:</label>
+        <input id="password" type="password" placeholder="Lozinka" ng-model="user.userData.password">
+
+        <br>
+        <button type="submit" class="pure-button pure-button-primary">Unesi</button>
+    </fieldset>
+</form>

@@ -23,8 +23,7 @@ angular.module('app.routes', ['ngRoute'])
 			controllerAs: 'user'
 		})
 
-		// form to create a new user
-		// same view as edit page
+		// Kreiranje novog korisnika
 		.when('/users/create', {
 			templateUrl: 'app/views/pages/users/single.html',
 			controller: 'userCreateController',
