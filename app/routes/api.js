@@ -163,14 +163,14 @@ module.exports = function(app, express){
 	// 		});
 	// 	});
 
-	apiRouter.get('/users', function(req, res){
-		User.find({}, function(err, usersList){
-			if(err)
-				res.send(err);
-
-			res.json(usersList);
-		});
-	});
+	// apiRouter.get('/users', function(req, res){
+	// 	User.find({}, function(err, usersList){
+	// 		if(err)
+	// 			res.send(err);
+	//
+	// 		res.json(usersList);
+	// 	});
+	// });
 
 
 	// /users/:user_id
