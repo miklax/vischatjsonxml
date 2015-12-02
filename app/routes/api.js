@@ -80,6 +80,30 @@ module.exports = function(app, express){
 		});
 	});
 
+	//endpoint  '/'
+	apiRouter.route('/', function(req, res){
+		res.json({
+			message: 'success, api root'
+		});
+	});
+
+	apiRouter.post(function(req, res){
+		//uzmi iz requesta podatke i snimi u bazu
+		var newUser = new User();
+		newUser.name = req.body.name;
+		newUser.username = req.body.username;
+		newUser.password = req.body.password;
+
+		newUser.save(function(err){
+			if(err){
+				if (err.code == 11000)
+					return res.json({ success: false, message: 'Korisnik sa tim imenom vec postoji '});
+				else
+					return res.send(err);
+			}
+		});
+	});
+
 	//provera tokena
 	apiRouter.use(function(req, res, next){
 
@@ -108,39 +132,46 @@ module.exports = function(app, express){
 		}
 	});
 
-	//endpoint  '/'
-	apiRouter.route('/', function(req, res){
-		res.json({
-			message: 'success, api root'
+
+	// /users
+	//ovaj deo nalazi se iza middleware koji proverava prvo da li token postoji
+	//pa tek onda dozvoli ove operacije. Prebacio sam da se korisnik moze kreirati
+	//pre tokena pa je i taj deo prebacen.
+	// apiRouter.route('/users')
+	// 	.post(function(req, res){
+	// 		//uzmi iz requesta podatke i snimi u bazu
+	// 		var newUser = new User();
+	// 		newUser.name = req.body.name;
+	// 		newUser.username = req.body.username;
+	// 		newUser.password = req.body.password;
+	//
+	// 		newUser.save(function(err){
+	// 			if(err){
+	// 				if (err.code == 11000)
+	// 					return res.json({ success: false, message: 'Korisnik sa tim imenom vec postoji '});
+	// 				else
+	// 					return res.send(err);
+	// 			}
+	// 		});
+	// 	})
+	// 	.get(function(req, res){
+	// 		User.find({}, function(err, usersList){
+	// 			if(err)
+	// 				res.send(err);
+	//
+	// 			res.json(usersList);
+	// 		});
+	// 	});
+
+	apiRouter.get('/users', function(req, res){
+		User.find({}, function(err, usersList){
+			if(err)
+				res.send(err);
+
+			res.json(usersList);
 		});
 	});
 
-	// /users
-	apiRouter.route('/users')
-		.post(function(req, res){
-			//uzmi iz requesta podatke i snimi u bazu
-			var newUser = new User();
-			newUser.name = req.body.name;
-			newUser.username = req.body.username;
-			newUser.password = req.body.password;
-
-			newUser.save(function(err){
-				if(err){
-					if (err.code == 11000)
-						return res.json({ success: false, message: 'Korisnik sa tim imenom vec postoji '});
-					else
-						return res.send(err);
-				}
-			});
-		})
-		.get(function(req, res){
-			User.find({}, function(err, usersList){
-				if(err)
-					res.send(err);
-
-				res.json(usersList);
-			});
-		});
 
 	// /users/:user_id
 	//get, put, delete,
