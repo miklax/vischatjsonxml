@@ -87,7 +87,7 @@ module.exports = function(app, express){
 		});
 	});
 
-	apiRouter.post(function(req, res){
+	apiRouter.post('/users', function(req, res){
 		//uzmi iz requesta podatke i snimi u bazu
 		var newUser = new User();
 		newUser.name = req.body.name;
@@ -163,15 +163,14 @@ module.exports = function(app, express){
 	// 		});
 	// 	});
 
-	// apiRouter.get('/users', function(req, res){
-	// 	User.find({}, function(err, usersList){
-	// 		if(err)
-	// 			res.send(err);
-	//
-	// 		res.json(usersList);
-	// 	});
-	// });
+	apiRouter.get('/users', function(req, res){
+		User.find({}, function(err, usersList){
+			if(err)
+				res.send(err);
 
+			res.json(usersList);
+		});
+	});
 
 	// /users/:user_id
 	//get, put, delete,
