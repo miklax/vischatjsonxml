@@ -40,7 +40,7 @@ module.exports = function(app, express){
 		// pronadji korisnika
 		User.findOne({
 			username: req.body.username
-		}).select('name username password').exec(function(err, user) {
+		}).select('_id name username password').exec(function(err, user) {
 
 			if (err) throw err;
 
@@ -63,8 +63,9 @@ module.exports = function(app, express){
 
 					// user ok, kreiraj token
 					var token = jwt.sign({
+						_id: user._id,
 						name: user.name,
-						username: user.username
+						username: user.username,
 					}, secretKey, {
 						expiresInMinutes: 2880 //2 dana :D
 					});
