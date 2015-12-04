@@ -14,7 +14,6 @@ angular.module('mainCtrl', [])
 			.then(function(data) {
 				vm.user = data.data;
 				$rootScope.gUsername = data.data.username;
-				console.log(vm.user);
 			});
 	});
 

@@ -26,7 +26,7 @@ module.exports = function(app, express){
 				newUser.save();
 
 				res.json({
-					message: 'admin user created'
+					message: 'admin korisnik kreiran'
 				});
 
 				console.log(newUser.name + 'created');
@@ -73,7 +73,7 @@ module.exports = function(app, express){
 					// vrati token
 					res.json({
 						success: true,
-						message: 'Token assigned!',
+						message: 'Token dodeljen!',
 						token: token
 					});
 				}
@@ -128,41 +128,10 @@ module.exports = function(app, express){
 			// ukoliko nema tokena
 				res.status(403).send({
 					success: false,
-					message: 'No token.'
+					message: 'Nema tokena.'
 				});
 		}
 	});
-
-
-	// /users
-	//ovaj deo nalazi se iza middleware koji proverava prvo da li token postoji
-	//pa tek onda dozvoli ove operacije. Prebacio sam da se korisnik moze kreirati
-	//pre tokena pa je i taj deo prebacen.
-	// apiRouter.route('/users')
-	// 	.post(function(req, res){
-	// 		//uzmi iz requesta podatke i snimi u bazu
-	// 		var newUser = new User();
-	// 		newUser.name = req.body.name;
-	// 		newUser.username = req.body.username;
-	// 		newUser.password = req.body.password;
-	//
-	// 		newUser.save(function(err){
-	// 			if(err){
-	// 				if (err.code == 11000)
-	// 					return res.json({ success: false, message: 'Korisnik sa tim imenom vec postoji '});
-	// 				else
-	// 					return res.send(err);
-	// 			}
-	// 		});
-	// 	})
-	// 	.get(function(req, res){
-	// 		User.find({}, function(err, usersList){
-	// 			if(err)
-	// 				res.send(err);
-	//
-	// 			res.json(usersList);
-	// 		});
-	// 	});
 
 	apiRouter.get('/users', function(req, res){
 		User.find({}, function(err, usersList){
@@ -189,20 +158,20 @@ module.exports = function(app, express){
 
 		//UPDATE korisnika sa zadatim ID
 		.put(function(req, res){
-				User.findById(res.params.user_id, function(err, user){
+				User.findById(req.params.user_id, function(err, user){
 					if (err) res.send(err);
 
 					//procitaj iz headera
-					if (res.body.name) user.name = res.body.name;
-					if (res.body.username) user.username = res.body.username;
-					if (res.body.password) user.pasword = res.body.password;
+					if (req.body.name) user.name = req.body.name;
+					if (req.body.username) user.username = req.body.username;
+					if (req.body.password) user.password = req.body.password;
 
 					user.save(function(err){
 						if (err) res.send(err);
 					});
 
 					//feedback u konzoli
-					res.json({message: 'User is updated'});
+					res.json({message: 'Korisnik je izmenjen'});
 					console.log('User: ' + user.name + ', is updated');
 				});
 		})
@@ -211,7 +180,7 @@ module.exports = function(app, express){
 			User.remove({_id: req.params.user_id}, function(err, user){
 				if (err) res.send(err);
 
-				res.json({message: 'User deleted'});
+				res.json({message: 'Korisnik obrisan'});
 				console.log('User: '+ user.name + ', is deleted');
 			});
 		});
