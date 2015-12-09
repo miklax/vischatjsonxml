@@ -6,7 +6,8 @@ angular.module('chatApp', [
 	'userCtrl',
 	'userService',
 	'chatJsonCtrl',
-	'jsonService'
+	'jsonService',
+	'scroll'
 	// 'chatXmlCtrl',
 	// 'xmlService'
 ])

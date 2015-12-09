@@ -1,6 +1,8 @@
 angular.module('scroll', [])
 .directive('scrollDir', function(){
+  console.log('directive init');
   return {
+    restrict: 'A',
     scope: {
       scrollBottomChat: "="
     },
