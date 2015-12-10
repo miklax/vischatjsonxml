@@ -5,6 +5,7 @@ var app = angular.module('chatJsonCtrl', [])
 
   var vm = this;
   vm.msgs = [];
+  $('#chatWrap').scrollTop($('#chatWrap')[0].scrollHeight);
 
   //TODO ovde ucitati history
   DBHistory.doGetHistory()
@@ -20,11 +21,14 @@ var app = angular.module('chatJsonCtrl', [])
     });
     vm.msgData.msgLine = '';
     console.log('sndMsg ok');
+
   };
 
   fsocket.on('get msg', function(dataObject) {
     vm.msgs.push(dataObject);
     $scope.$digest();
+    $('#chatWrap').scrollTop($('#chatWrap')[0].scrollHeight);
   });
+
 
 });
