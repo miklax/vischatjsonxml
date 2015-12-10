@@ -1,6 +1,8 @@
 angular.module('chatApp')
 .directive('scrollDir', function(){
+  console.log('directive init');
   return {
+    restrict: 'A',
     scope: {
       scrollDir: "="
     },
