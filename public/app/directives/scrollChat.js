@@ -1,12 +1,13 @@
-angular.module('scroll', [])
+angular.module('chatApp')
 .directive('scrollDir', function(){
   return {
     scope: {
-      scrollBottomChat: "="
+      scrollDir: "="
     },
     link: function (scope, element) {
-      scope.$watchCollection('scrollBottomChat', function (newValue) {
-        if (newValue){
+      scope.$watchCollection('scrollDir', function (newValue) {
+        if (newValue)
+        {
           $(element).scrollTop($(element)[0].scrollHeight);
         }
       });

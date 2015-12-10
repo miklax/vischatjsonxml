@@ -6,15 +6,12 @@ angular.module('chatApp', [
 	'userCtrl',
 	'userService',
 	'chatJsonCtrl',
-	'jsonService'
-	// 'chatXmlCtrl',
-	// 'xmlService'
+	'jsonService',
 ])
 
-// application configuration to integrate token into requests
 .config(function($httpProvider) {
 
-	// attach our auth interceptor to the http requests
+	// na svaki http request proveri token
 	$httpProvider.interceptors.push('AuthInterceptor');
 
 });
