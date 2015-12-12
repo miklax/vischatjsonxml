@@ -26,7 +26,7 @@ var app = angular.module('chatJsonCtrl', [])
   fsocket.on('get msg', function(dataObject) {
     vm.msgs.push(dataObject);
     $scope.$digest();
-    $('#chatWrap').scrollTop($('#chatWrap')[0].scrollHeight);
+    // $('#chatWrap').scrollTop($('#chatWrap')[0].scrollHeight);
   });
 
 
