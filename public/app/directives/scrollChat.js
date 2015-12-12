@@ -8,6 +8,7 @@ angular.module('chatApp')
     },
     link: function (scope, element) {
       scope.$watchCollection('scrollDir', function (newValue) {
+        console.log(element);
         if (newValue)
         {
           $(element).scrollTop($(element)[0].scrollHeight);
