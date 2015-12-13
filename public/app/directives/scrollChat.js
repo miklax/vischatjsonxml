@@ -7,14 +7,14 @@ angular.module('chatApp')
       scrollDir: "="
     },
     link: function (scope, element) {
-      scope.$watchCollection('scrollDir', function (newValue) {
-        console.log(newValue);
-
-        if (newValue)
-        {
-          $(element).scrollTop($(element)[0].scrollHeight);
+          //$watchCollection - prati promene u array i u callback registruje promenu
+          scope.$watchCollection('scrollDir', function (newMsg) {
+            if (newMsg)
+            {
+              $(element).scrollTop($(element)[0].scrollHeight);
+            }
+          });
         }
-      });
-    }
-  };
+    };
+
 });
