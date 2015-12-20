@@ -11,3 +11,10 @@
   height: 400px;
   overflow: auto;
 }
+
+.animacija-teksta.ng-enter, .animacija-teksta.ng-move {
+  -webkit-transition: display .5s all;
+  -moz-transition: display .5s all;
+  -o-transition: display .5s all;
+  transition: display .5s all;
+}
